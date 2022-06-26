@@ -2,28 +2,36 @@ const express = require('express')
 const router = express.Router()
 
 
-router.get('/', function(req, res){
+// GET METHODS
+router.get('/user', ()=>{})
+router.get('/user/all', ()=>{})
+router.post('/user/forgt', ()=>{})
+router.get('/category', ()=>{})
 
-    const query = req.query
-	res.send({
-        status: 0,
-        msg: 'message',
-        data: query
-    })
-})
+router.get('/favorite', ()=>{})
 
-router.get('/get', function(req, res){
-	res.send("hello get")
-})
+router.get('/rss', ()=>{})
+// /rss/[all | readed | unreaded]
+router.get(/^\/rss\/(\w+)$/, ()=>{})
+router.get('/rss/refreash', ()=>{})
 
-router.get('/post', function(req, res){
-    const body = req.body
-	res.send({
-        status: 0,
-        msg: 'message',
-        data: body
-    })
-})
+router.get('/article', ()=>{})
 
+// POST METHODS
+router.post('/register', ()=>{})
+router.post('/login', ()=>{})
+router.post('/logout', ()=>{})
+router.post('/reset', ()=>{})
+
+router.post('/category/new', ()=>{})
+router.post('/category/delete', ()=>{})
+router.post('/category/rename', ()=>{})
+
+router.post('/rss/new', ()=>{})
+router.post('/rss/delete', ()=>{})
+router.post('/rss/update', ()=>{})
+
+router.post('/article/readed', ()=>{})
+router.post('/article/star', ()=>{})
 
 module.exports = router
