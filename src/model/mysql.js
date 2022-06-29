@@ -6,7 +6,8 @@ const config = JSON.parse(data);
 
 const sequelize = new Sequelize(config['database'], config['user'], config['password'], {
     host: config['host'],
-    dialect: mysql
+    dialect: 'mysql',
+    timezone: '+08:00', // timezone
   });
 
 module.exports = sequelize
