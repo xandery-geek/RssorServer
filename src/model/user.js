@@ -22,7 +22,7 @@ User.init({
     allowNull: false,
   },
   gender:{
-    type: DataTypes.INTEGER,
+    type: DataTypes.TINYINT,
     allowNull: false,
     defaultValue: 0
   },
@@ -47,7 +47,8 @@ User.init({
   // Other model options go here
   sequelize, // We need to pass the connection instance
   modelName: 'User', // We need to choose the model name
-  timestamps: false
+  timestamps: false,
+  tableName: 'Users'
 });
 
 
