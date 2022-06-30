@@ -1,8 +1,17 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('./mysql')
+const crypto = require('crypto')
 
 
-class User extends Model {}
+class User extends Model {
+  static checkPassword(password){
+
+  }
+
+  static checkEmail(email){
+    
+  }
+}
 
 User.init({
   // Model attributes are defined here
@@ -28,7 +37,12 @@ User.init({
   },
   password:{
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    set(value) {
+      const hash = crypto.createHash('sha1')
+      hash.update(this.email + value);
+      this.setDataValue(hash.digest())
+    }
   },
   registerDate:{
     type: DataTypes.DATE,

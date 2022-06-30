@@ -1,7 +1,7 @@
 const express = require('express')
 const router = require('./src/router')
 const cors = require('cors')
-
+const sequelize = require('./src/model/mysql')
 
 
 const app = express()
@@ -12,6 +12,13 @@ app.use(cors())  // CORS
 
 app.use('/api', router)
 
-app.listen(3000, ()=>{
-    console.log("Runing at http://127.0.01:3000 !")
-})
+(async ()=>{
+    // sync database
+    await sequelize.sync()
+
+    app.listen(3000, ()=>{
+        console.log("Runing at http://127.0.01:3000 !")
+    })
+})();
+
+
